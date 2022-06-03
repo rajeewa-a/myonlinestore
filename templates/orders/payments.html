@@ -156,6 +156,7 @@
     var url = "{% url 'payments' %}"
     var orderID = "{{order.order_number}}"
     var payment_method = 'Paypal'
+    var redirect_url = "{% url 'order_complete' %}"
       
 
       function initPayPalButton() {
@@ -195,7 +196,14 @@
                     status: orderData.status,
                   }),
                 })
-                .then(response => response.json())
+                .then((response) => response.json())
+                .then((data) => {
+                  // console.log('Success: ', data)
+                  // console.log('Transaction completed')
+
+                  window.location.href = redirect_url + '?order_number='+ data.order_number+'&payment_id='+data.transID;
+
+                });
               }
   
               // Show a success message within this page, e.g.
