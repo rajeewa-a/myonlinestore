@@ -237,7 +237,7 @@ def my_orders(request):
 
 @login_required(login_url='login')
 def edit_profile(request):
-    userprofile = get_object_or_404(UserProfile, user = request.user)
+    userprofile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = UserProfileForm(request.POST, request.FILES,instance=userprofile)
@@ -288,7 +288,7 @@ def change_password(request):
             messages.error(request, 'Passwords do not match.')
             return redirect('change_password')
 
-    return render(request,'accounts/change_password')
+    return render(request,'accounts/change_password.html')
 
 @login_required(login_url='login')
 def order_detail(request, order_id):
