@@ -1,4 +1,3 @@
-myonlinestore/settings.py
 .env
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
